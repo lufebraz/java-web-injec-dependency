@@ -1,0 +1,2 @@
+P;Pedido do Arthur;Arthur Schroder;98787676565;arthur.schroder@meu.amor.edu.br
+C;iphone;4000;744;128;3;ios

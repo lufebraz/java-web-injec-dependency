@@ -16,9 +16,9 @@ public class ProdutoController {
 	private ProdutoService produtoService;
 
 	@GetMapping(value = "/produto/lista")
-	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
+	public String telaLista(Model model) {
 
-		model.addAttribute("listaProduto", produtoService.obterLista(usuario));
+		model.addAttribute("listaProduto", produtoService.obterLista());
 
 		return "produto/lista";
 	}

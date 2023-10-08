@@ -4,13 +4,13 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>AppPedido</title>
+	<title>e-commerce</title>
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
 	<c:import url="/WEB-INF/jsp/menu.jsp"/>
 
-	<div class="container-fluid mt-3">
+	<div class="container mt-3">
 	  <h3>Listagem de usuários:</h3>
 
 	  <table class="table table-striped">

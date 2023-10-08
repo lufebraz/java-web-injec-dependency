@@ -39,7 +39,11 @@ public class TelevisaoController {
 
         return "televisao/lista";
     }
+    @GetMapping(value = "/televisao/cadastro")
+    public String telaCadastro() {
 
+        return "televisao/cadastro";
+    }
     @GetMapping(value = "/televisao/{codigo}/excluir")
     public String exclusao(@PathVariable int codigo) {
 

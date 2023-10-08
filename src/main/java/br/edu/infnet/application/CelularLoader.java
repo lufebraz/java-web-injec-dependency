@@ -22,7 +22,6 @@ public class CelularLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("\nINCLUINDO CELULARES...");
         BufferedReader reader = new BufferedReader(new FileReader("arquivos/celular.txt"));
 
         String linha = reader.readLine();
@@ -42,8 +41,6 @@ public class CelularLoader implements ApplicationRunner {
             );
 
             celularController.incluir(celular);
-
-            System.out.println("inclusao celular: " + celular);
             linha = reader.readLine();
         }
     }

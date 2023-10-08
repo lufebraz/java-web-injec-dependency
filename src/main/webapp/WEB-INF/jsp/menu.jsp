@@ -4,7 +4,7 @@
 <nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Luiz's App</a>
+			<a class="navbar-brand" href="#">e-commerce</a>
 		</div>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="/">Home</a></li>
@@ -24,10 +24,10 @@
 					<a class="nav-link" href="/celular/lista">Celulares</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/nootebook/lista">Notebooks</a>
+					<a class="nav-link" href="/notebook/lista">Notebooks</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/televisao/lista">Televisoes</a>
+					<a class="nav-link" href="/televisao/lista">Televisores</a>
 				</li>
 		</ul>
 <%--		<ul class="nav navbar-nav navbar-right">--%>

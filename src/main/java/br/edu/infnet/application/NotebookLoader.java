@@ -21,7 +21,6 @@ public class NotebookLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("\nINCLUINDO NOTEBOOKS...");
         BufferedReader reader = new BufferedReader(new FileReader("arquivos/notebook.txt"));
 
         String linha = reader.readLine();
@@ -41,8 +40,6 @@ public class NotebookLoader implements ApplicationRunner {
             );
 
             notebookController.incluir(notebook);
-
-            System.out.println("inclusao nootebook: " + notebook);
             linha = reader.readLine();
         }
     }

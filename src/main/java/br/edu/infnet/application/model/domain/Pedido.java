@@ -2,6 +2,7 @@ package br.edu.infnet.application.model.domain;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,7 +17,7 @@ public class Pedido {
     private boolean web;
 
     @OneToOne(cascade = CascadeType.DETACH)
-    @JoinColumn(name = "idSolicitante")
+    @JoinColumn(name = "idRequerente")
     private Requerente requerente;
     @ManyToMany(cascade = CascadeType.DETACH)
     private List<Produto> produtoList;
@@ -34,6 +35,13 @@ public class Pedido {
 
     public Pedido() {
 
+    }
+
+    public Pedido(String descricao, Requerente requerente, List<Produto> produtoList) {
+        this();
+        this.descricao = descricao;
+        this.requerente = requerente;
+        this.produtoList = produtoList;
     }
 
     @Override

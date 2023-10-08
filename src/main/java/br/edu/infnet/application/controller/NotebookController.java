@@ -1,6 +1,8 @@
 package br.edu.infnet.application.controller;
 
 import br.edu.infnet.application.model.domain.produtos.Notebook;
+import br.edu.infnet.application.model.service.NotebookService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,35 +15,40 @@ import java.util.Map;
 @Controller
 public class NotebookController {
 
-    private Map<Integer, Notebook> mapaNotebook = new HashMap<Integer, Notebook>();
+    @Autowired
+    private NotebookService notebookService;
 
     public Collection<Notebook> obterLista(){
-        return mapaNotebook.values();
+        return notebookService.obterLista();
     }
 
-    public void incluir(Notebook nootebook) {
-        mapaNotebook.put(nootebook.getCodigo(), nootebook);
-        System.out.println("[Notebook] Inclusão realizada com sucesso: " + nootebook);
+    public void incluir(Notebook notebook) {
+        notebookService.incluir(notebook);
+        System.out.println("[Notebook] Inclusão realizada com sucesso: " + notebook);
     }
 
     public void excluir(int codigo) {
-        mapaNotebook.remove(codigo);
+        notebookService.excluir(codigo);
     }
 
-    @GetMapping(value = "/nootebook/lista")
+    @GetMapping(value = "/notebook/lista")
     public String telaLista(Model model) {
 
         model.addAttribute("listaNotebook", obterLista());
 
-        return "nootebook/lista";
+        return "notebook/lista";
     }
+    @GetMapping(value = "/notebook/cadastro")
+    public String telaCadastro() {
 
-    @GetMapping(value = "/nootebook/{codigo}/excluir")
+        return "notebook/cadastro";
+    }
+    @GetMapping(value = "/notebook/{codigo}/excluir")
     public String exclusao(@PathVariable int codigo) {
 
         excluir(codigo);
 
-        return "redirect:/nootebook/lista";
+        return "redirect:/notebook/lista";
     }
     
     

@@ -22,10 +22,10 @@ public class MapLoader implements ApplicationRunner {
 		userMap.put("234", new Requerente("aninha", "234", "ana@ana.com"));
 
 		//recuperar as chaves do mapa
-		System.out.println(userMap.keySet());
+		userMap.keySet();
 
 		//recuperar os valores do mapa
-		System.out.println(userMap.values());
+		userMap.values();
 
 		//remover um valor através da chave
 		userMap.remove("234");

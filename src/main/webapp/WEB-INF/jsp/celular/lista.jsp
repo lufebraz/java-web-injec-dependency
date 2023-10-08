@@ -11,8 +11,8 @@
 	<c:import url="/WEB-INF/jsp/menu.jsp"/>
 	
 	<div class="container mt-3">
-	  <h3>Listagem de Televisores:</h3>
-	  <h4><a href="/televisao/cadastro">cadastrar nova televisao</a></h4>
+	  <h3>Listagem de Celulares:</h3>
+	  <h4><a href="/celular/cadastro">cadastrar novo celular</a></h4>
 
 	  <table class="table table-striped">
 	    <thead>
@@ -21,24 +21,24 @@
 	        <th>Nome</th>
 	        <th>Valor</th>
 	        <th>Código</th>
-	        <th>Polegadas</th>
-	        <th>SmartTv</th>
-	        <th>Marca</th>
+	        <th>Armazenamento</th>
+	        <th>Qnt. Cameras</th>
+	        <th>Sistema Operacional</th>
 	        <th></th>
 	      </tr>
 	    </thead>
 	    <tbody>
 	   	    
-	      <c:forEach var="notebook" items="${tvList}">
+	      <c:forEach var="notebook" items="${celList}">
 		      <tr>
 		        <td>${notebook.id}</td>
 		        <td>${notebook.nome}</td>
 		        <td>${notebook.valor}</td>
 		        <td>${notebook.codigo}</td>
-		        <td>${notebook.polegadas}</td>
-		        <td>${notebook.smartTv ? "sim": "não"}</td>
-		        <td>${notebook.marca}</td>
-		        <td><a href="/televisao/${notebook.id}/excluir">excluir</a> </td>
+		        <td>${notebook.armazenamento}</td>
+		        <td>${notebook.quantidadeCameras}</td>
+		        <td>${notebook.sistemaOperacional}</td>
+		        <td><a href="/celular/${notebook.id}/excluir">excluir</a> </td>
 		      </tr>
 	      </c:forEach>
 	    </tbody>

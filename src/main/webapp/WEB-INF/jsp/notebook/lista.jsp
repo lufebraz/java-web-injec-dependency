@@ -11,8 +11,8 @@
 	<c:import url="/WEB-INF/jsp/menu.jsp"/>
 	
 	<div class="container mt-3">
-	  <h3>Listagem de Televisores:</h3>
-	  <h4><a href="/televisao/cadastro">cadastrar nova televisao</a></h4>
+	  <h3>Listagem de Notebooks:</h3>
+	  <h4><a href="/notebook/cadastro">cadastrar novo notebook</a></h4>
 
 	  <table class="table table-striped">
 	    <thead>
@@ -21,24 +21,24 @@
 	        <th>Nome</th>
 	        <th>Valor</th>
 	        <th>Código</th>
-	        <th>Polegadas</th>
-	        <th>SmartTv</th>
-	        <th>Marca</th>
+	        <th>Processador</th>
+	        <th>Qtd. Memória RAM</th>
+	        <th>Placa de vídeo</th>
 	        <th></th>
 	      </tr>
 	    </thead>
 	    <tbody>
 	   	    
-	      <c:forEach var="notebook" items="${tvList}">
+	      <c:forEach var="notebook" items="${listaNotebook}">
 		      <tr>
 		        <td>${notebook.id}</td>
 		        <td>${notebook.nome}</td>
 		        <td>${notebook.valor}</td>
 		        <td>${notebook.codigo}</td>
-		        <td>${notebook.polegadas}</td>
-		        <td>${notebook.smartTv ? "sim": "não"}</td>
-		        <td>${notebook.marca}</td>
-		        <td><a href="/televisao/${notebook.id}/excluir">excluir</a> </td>
+		        <td>${notebook.processador}</td>
+		        <td>${notebook.memoriaRam}</td>
+		        <td>${notebook.placaDeVideo ? "sim": "não"}</td>
+		        <td><a href="/notebook/${notebook.id}/excluir">excluir</a> </td>
 		      </tr>
 	      </c:forEach>
 	    </tbody>

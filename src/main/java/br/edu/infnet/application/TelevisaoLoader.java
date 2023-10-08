@@ -21,7 +21,6 @@ public class TelevisaoLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("\nINCLUINDO TELEVISOES...");
         BufferedReader reader = new BufferedReader(new FileReader("arquivos/televisao.txt"));
 
         String linha = reader.readLine();
@@ -41,8 +40,6 @@ public class TelevisaoLoader implements ApplicationRunner {
             );
 
             televisaoService.incluir(televisao);
-
-            System.out.println("inclusao televeisao: " + televisao);
             linha = reader.readLine();
         }
     }

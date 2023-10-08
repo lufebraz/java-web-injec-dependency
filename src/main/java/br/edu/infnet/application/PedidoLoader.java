@@ -1,31 +1,116 @@
 package br.edu.infnet.application;
 
+import br.edu.infnet.application.controller.PedidoController;
+import br.edu.infnet.application.model.domain.*;
 import br.edu.infnet.application.model.domain.produtos.Celular;
-import br.edu.infnet.application.model.domain.Pedido;
-import br.edu.infnet.application.model.domain.Produto;
-import br.edu.infnet.application.model.domain.Requerente;
+import br.edu.infnet.application.model.domain.produtos.Notebook;
+import br.edu.infnet.application.model.domain.produtos.Televisao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
-
+import java.util.HashMap;
+import java.util.Map;
 
 @Order(5)
 @Component
 public class PedidoLoader implements ApplicationRunner {
+	
+	@Autowired
+	private PedidoController pedidoController;
 
-    @Override
-    public void run(ApplicationArguments args) throws Exception {
-        Requerente requerente = new Requerente("NOME", "123123123", "123123@213123");
-        Celular celular = new Celular( "iphone",3000,2,128,3,"ios" );
+	@Override
+	public void run(ApplicationArguments args) throws Exception {
+		
+		Map<LocalDateTime, Pedido> mapaPedido = new HashMap<LocalDateTime, Pedido>();
+		
+		FileReader file = new FileReader("arquivos/pedido.txt");
+		BufferedReader leitura = new BufferedReader(file);
+		
+		String linha = leitura.readLine();
+		
+		String[] campos = null;
+		
+		Pedido pedido = null;		
+		
+		while(linha != null) {
+			campos = linha.split(";"); 
 
-        List<Produto> produtoList = new ArrayList<Produto>();
-        produtoList.add(celular);
+			switch (campos[0]) {
+			case "P":		
+								
+				pedido = new Pedido(
+						campos[1], 
+						new Requerente(campos[2], campos[3], campos[4]),
+						new ArrayList<Produto>()
+					);				
 
-        Pedido pedido = new Pedido(requerente, produtoList);
-        System.out.println("inclusao com sucesso "+ pedido);
-    }
+				pedidoController.incluir(pedido, new Usuario());
+
+				break;
+
+			case "C":
+				Celular celular = new Celular(
+						campos[1],
+						Float.parseFloat(campos[2]),
+						Integer.parseInt(campos[3]),
+						Integer.parseInt(campos[4]),
+						Integer.parseInt(campos[5]),
+						campos[6]
+				);
+				
+				pedido.getProdutoList().add(celular);
+				
+				break;
+
+			case "N":
+
+				Notebook notebook = new Notebook(
+						campos[1],
+						Float.parseFloat(campos[2]),
+						Integer.parseInt(campos[3]),
+						campos[4],
+						campos[5],
+						Boolean.parseBoolean(campos[6])
+				);
+				
+				pedido.getProdutoList().add(notebook);
+				
+				break;
+
+			case "T":
+
+				Televisao televisao = new Televisao(
+						campos[1],
+						Float.parseFloat(campos[2]),
+						Integer.parseInt(campos[3]),
+						campos[4],
+						Boolean.parseBoolean(campos[5]),
+						campos[6]
+				);
+				
+				pedido.getProdutoList().add(televisao);
+
+				break;
+
+			default:
+				break;
+			}
+			
+			linha = leitura.readLine();
+		}
+
+		for(Pedido p : mapaPedido.values()) {
+			System.out.println("[Pedido] Inclusão realizada com sucesso: " + p);			
+		}
+
+		leitura.close();			
+	}
+
 }

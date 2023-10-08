@@ -22,6 +22,7 @@ public class CelularController {
         return celularService.obterLista();
     }
 
+
     public void incluir(Celular celular) {
         celularService.incluir(celular);
 
@@ -39,7 +40,11 @@ public class CelularController {
 
         return "celular/lista";
     }
+    @GetMapping(value = "/celular/cadastro")
+    public String telaCadastro() {
 
+        return "celular/cadastro";
+    }
     @GetMapping(value = "/celular/{codigo}/excluir")
     public String exclusao(@PathVariable int codigo) {
 

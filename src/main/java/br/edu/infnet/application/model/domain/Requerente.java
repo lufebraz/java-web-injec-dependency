@@ -12,6 +12,9 @@ public class Requerente {
     private String nome;
     private String cpf;
     private String email;
+    @ManyToOne
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
 
     public Requerente() {
     }

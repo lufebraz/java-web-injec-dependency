@@ -13,7 +13,7 @@
 	  
 	  <form action="/televisao/incluir" method="post">
 	  
-		<c:import url="/WEB-INF/jsp/produto/cadastro.jsp"/>
+<%--		<c:import url="/WEB-INF/jsp/produto/cadastro.jsp"/>--%>
 		
 		<div class="form-check">
 		  <input class="form-check-input" type="checkbox" name="doce" value="true" checked>
