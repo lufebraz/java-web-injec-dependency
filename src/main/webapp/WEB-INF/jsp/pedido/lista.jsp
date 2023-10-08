@@ -33,9 +33,9 @@
                 <td>${pedido.id}</td>
                 <td>${pedido.descricao}</td>
                 <td>${pedido.data}</td>
-                <td>${pedido.web}</td>
+                <td>${pedido.web ? "sim" : "não"}</td>
                 <td>${pedido.requerente.nome}</td>
-                <td>${pedido.produtos.size()}</td>
+                <td>${pedido.produtoList.size()}</td>
                 <td><a href="/pedido/${pedido.id}/excluir">excluir</a></td>
             </tr>
         </c:forEach>

@@ -9,16 +9,18 @@
 </head>
 <body>
 	<div class="container mt-3">
-	  <h2>Cadastramento de Televisao</h2>
+	  <h2>Cadastramento de Celular</h2>
 
-	  <form action="/televisao/incluir" method="post">
+	  <form action="/celular/incluir" method="post">
 
 		<div class="form-check">
+			<label>Celular:</label>
 			<select class="custom-select">
-				<option value="Quantum">TQuantum</option>
-				<option value="Tetris">Tetris</option>
-				<option value="MegaTv">MegaTv</option>
-				<option value="MegaTv">MegaTv</option>
+				<option>Selecione o Celular</option>
+				<option value="s20">s20</option>
+				<option value="iphone">iphone</option>
+				<option value="galaxy">galaxy</option>
+				<option value="xioami">xioami</option>
 			</select>
 		</div>
 
@@ -27,14 +29,14 @@
 		  <input type="text" class="form-control" placeholder="Entre com a sua quantidade" name="quantidade">
 		</div>
 
-		  <div class="mb-3 mt-3">
-			  <label>Tipo de pagamento:</label>
-			  <select class="custom-select" >
-				  <option>selecione</option>
-				  <option value="pix">pix</option>
-				  <option value="cartao">cartao</option>
-			  </select>
-		  </div>
+		<div class="mb-3 mt-3">
+		  <label>Tipo de pagamento:</label>
+			<select class="custom-select" >
+				<option>selecione</option>
+				<option value="pix">pix</option>
+				<option value="cartao">cartao</option>
+			</select>
+		</div>
 
 			<button type="submit" class="btn btn-primary">Cadastrar</button>
 	  </form>

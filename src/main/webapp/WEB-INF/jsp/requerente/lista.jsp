@@ -13,7 +13,7 @@
 <div class="container mt-3">
     <h3>Requerentes: ${listagem.size()}</h3>
 
-    <h4><a href="/requerente">Novo Requerente</a></h4>
+    <h4><a href="#">Novo Requerente</a></h4>
 
     <table class="table table-striped">
         <thead>

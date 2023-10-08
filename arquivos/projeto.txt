@@ -1,0 +1,26 @@
+P;AppPedido;Projeto de Gestão de Pedidos
+C;Celular
+A;armazenamento;integer;Indicativo da quantidade de armazenamento
+A;Qtd de Cameras;integer;Indica quantidade de cameras do dispositivo
+A;Sistema Operacional;String;Indica o sistema operacional do aparelho
+C;Notebook
+A;Processador;String;Indica o processador do notebook
+A;Memoria Ram;String;Indica a quantidade de memoria Ram
+A;Placa de video;boolean;Indica se vem com placa de video
+C;Televisao
+A;Polegadas;int;Indica o tamanho do televisor
+A;Smart Tv;boolean;Indica se a tv possui funcionalidade smart
+A;Marca;String;Indica a marca do produto
+C;Pedido
+A;descricao;String;Detalhamento do pedido
+A;data;LocalDateTime;Data de realização do pedido
+A;web;boolean;Indicativo se o pedido foi realizado presencialmente ou pela web
+C;Requerente
+A;nome;String;Nome do solicitante
+A;email;String;E-mail do solicitante
+A;cpf;String;CPF do solicitante
+C;Produto
+A;nome;String;Nome do produto
+A;valor;float;Valor do produto
+A;codigo;int;Código do produto
+
