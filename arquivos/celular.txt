@@ -1,0 +1,3 @@
+s20;2000;1;128;4;android
+iphone;4000;2;128;3;ios
+galaxy;3000;3;128;2;android

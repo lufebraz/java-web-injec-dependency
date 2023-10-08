@@ -1,0 +1,6 @@
+huguinho;12312312312;hugo@hugo.com
+mariazinha;23423423423;maria@maria.com
+zezinho;34534534534;jose@jose.com
+aninha;45645645645;ana@ana.com
+luizinho;56756756756;luiz@luiz.com
+elberth;98798798798;elberth@elberth.com
