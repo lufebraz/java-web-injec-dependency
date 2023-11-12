@@ -1,4 +1,6 @@
-package br.edu.infnet.application.model.domain;
+package br.edu.infnet.application.model.domain.produtos;
+
+import br.edu.infnet.application.model.domain.Pedido;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,29 +14,20 @@ public abstract class Produto {
     private Integer id;
     private String nome;
     private float valor;
-    private int codigo;
-
-    @ManyToMany(mappedBy = "produtoList")
-    private List<Pedido> pedidos;
-    @ManyToOne
-    @JoinColumn(name = "idUsuario")
-    private Usuario usuario;
 
     public Produto() {
     }
 
-    public Produto(String nome, float valor, int codigo) {
+    public Produto(String nome, float valor) {
         this.nome = nome;
         this.valor = valor;
-        this.codigo = codigo;
     }
 
     @Override
     public String toString() {
         return String.format("%s;%.2f;%d",
                         nome,
-                        valor,
-                        codigo);
+                        valor);
     }
 
     public Integer getId() {
@@ -61,27 +54,6 @@ public abstract class Produto {
         this.valor = valor;
     }
 
-    public int getCodigo() {
-        return codigo;
-    }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
 
-    public List<Pedido> getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
 }

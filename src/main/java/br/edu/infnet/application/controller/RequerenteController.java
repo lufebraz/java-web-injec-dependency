@@ -3,47 +3,51 @@ package br.edu.infnet.application.controller;
 import br.edu.infnet.application.model.domain.Requerente;
 import br.edu.infnet.application.model.service.RequerenteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Collection;
+
+@RestController
+@RequestMapping("/requerente")
 public class RequerenteController {
 
     @Autowired
     private RequerenteService requerenteService;
 
-    @GetMapping(value = "/requerente/lista")
-    public String telaLista(Model model) {
+    @PostMapping
+    public ResponseEntity<Requerente> incluir(@RequestBody Requerente requerente) throws URISyntaxException {
+        Requerente requerenteSalvo = requerenteService.incluir(requerente);
 
-        model.addAttribute("listaRequerente", requerenteService.obterLista());
-
-        return "requerente/lista";
+        return ResponseEntity.created(new URI("/requerente/" + requerenteSalvo.getId())).body(requerenteSalvo);
     }
 
-    @GetMapping(value = "/requerente/cadastro")
-    public String telaCadastro() {
 
-        return "requerente/cadastro";
+    @DeleteMapping("/{codigo}")
+    public ResponseEntity<String> excluir(@PathVariable("codigo") int codigo) {
+        boolean wasDeleted = requerenteService.excluir(codigo);
+
+        return wasDeleted ? ResponseEntity.ok("Excluido") :  ResponseEntity.badRequest().body("Nao foi localizado");
     }
 
-    @PostMapping(value = "/requerente/incluir")
-    public String incluir(Requerente requerente) {
+    @PutMapping(value = "/update/{codigo}")
+    public ResponseEntity<?> atualizarRequerente(@RequestBody Requerente requerente, @PathVariable("codigo") int codigo) throws Exception {
+        Requerente savedRequerente = requerenteService.atualizarRequerente(requerente, codigo);
 
-        requerenteService.incluir(requerente);
-
-        return "redirect:/requerente/lista";
+        return savedRequerente != null ? ResponseEntity.ok(requerente) : ResponseEntity.badRequest().body("Nao foi localizado");
     }
 
-    @GetMapping(value = "/requerente/{id}/excluir")
-    public String excluir(@PathVariable Integer id) {
-
-        requerenteService.excluir(id);
-
-        return "redirect:/requerente/lista";
+    @GetMapping("/find-all")
+    public Collection<Requerente> obterLista(){
+        return requerenteService.obterLista();
     }
-    
-    
+
+    @GetMapping("/{codigo}")
+    public ResponseEntity<?> obterPorId(@PathVariable("codigo") int codigo){
+        Requerente requerente = requerenteService.obterPorId(codigo);
+        return requerente != null ? ResponseEntity.ok(requerente) : ResponseEntity.badRequest().body("Nao foi localizado");
+    }
+
 }

@@ -1,8 +1,9 @@
 package br.edu.infnet.application.model.domain;
 
+import br.edu.infnet.application.model.domain.produtos.Produto;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,9 +22,6 @@ public class Pedido {
     private Requerente requerente;
     @ManyToMany(cascade = CascadeType.DETACH)
     private List<Produto> produtoList;
-    @ManyToOne
-    @JoinColumn(name = "idUsuario")
-    private Usuario usuario;
 
     public Pedido(Requerente requerente, List<Produto> produtoList) {
         this.descricao = "Pedido inicial";
@@ -97,11 +95,5 @@ public class Pedido {
         this.produtoList = produtoList;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
 }

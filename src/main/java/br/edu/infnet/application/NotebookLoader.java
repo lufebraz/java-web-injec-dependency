@@ -33,10 +33,9 @@ public class NotebookLoader implements ApplicationRunner {
             Notebook notebook = new Notebook(
                     campos[0],
                     Float.parseFloat(campos[1]),
-                    Integer.parseInt(campos[2]),
+                    campos[2],
                     campos[3],
-                    campos[4],
-                    Boolean.parseBoolean(campos[5])
+                    Boolean.parseBoolean(campos[4])
             );
 
             notebookController.incluir(notebook);

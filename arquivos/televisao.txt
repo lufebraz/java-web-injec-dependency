@@ -1,4 +1,4 @@
-Quantum;3000.00;4541;59;true;Samsung
-Tetris;2500;2123;34;false;Lg
-MegaTv;4000;3233;75;true;Phillips
-UltraHd;6000;1244;60;true;Sony
+Quantum;3000.00;59;true;Samsung
+Tetris;2500;34;false;Lg
+MegaTv;4000;75;true;Phillips
+UltraHd;6000;60;true;Sony

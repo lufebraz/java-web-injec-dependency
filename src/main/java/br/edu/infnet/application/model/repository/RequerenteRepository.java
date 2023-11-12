@@ -10,6 +10,5 @@ import java.util.List;
 @Repository
 public interface RequerenteRepository extends CrudRepository<Requerente, Integer> {
 
-    @Query("from Requerente r where r.usuario.id = :userid")
-    public List<Requerente> obterLista(Integer userid);
+
 }

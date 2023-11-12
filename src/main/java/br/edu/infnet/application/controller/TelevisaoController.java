@@ -3,54 +3,53 @@ package br.edu.infnet.application.controller;
 import br.edu.infnet.application.model.domain.produtos.Televisao;
 import br.edu.infnet.application.model.service.TelevisaoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
-@Controller
+@RestController
+@RequestMapping("/televisao")
 public class TelevisaoController {
 
     @Autowired
     private TelevisaoService televisaoService;
 
+    @PostMapping
+    public ResponseEntity<Televisao> incluir(@RequestBody Televisao televisao) throws URISyntaxException {
+        Televisao televisaoSalvo = televisaoService.incluir(televisao);
 
+        return ResponseEntity.created(new URI("/televisao/" + televisaoSalvo.getId())).body(televisaoSalvo);
+    }
+
+
+    @DeleteMapping("/{codigo}")
+    public ResponseEntity<String> excluir(@PathVariable("codigo") int codigo) {
+        boolean wasDeleted = televisaoService.excluir(codigo);
+
+        return wasDeleted ? ResponseEntity.ok("Excluido") :  ResponseEntity.badRequest().body("Nao foi localizado");
+    }
+
+    @PutMapping(value = "/update/{codigo}")
+    public ResponseEntity<?> atualizarTelevisao(@RequestBody Televisao televisao, @PathVariable("codigo") int codigo) throws Exception {
+        Televisao savedTelevisao = televisaoService.atualizarTelevisao(televisao, codigo);
+
+        return savedTelevisao != null ? ResponseEntity.ok(televisao) : ResponseEntity.badRequest().body("Nao foi localizado");
+    }
+
+    @GetMapping("/find-all")
     public Collection<Televisao> obterLista(){
         return televisaoService.obterLista();
     }
 
-    public void incluir(Televisao televisao) {
-        televisaoService.incluir(televisao);
-        System.out.println("[Televisao] Inclusão realizada com sucesso: " + televisao);
+    @GetMapping("/{codigo}")
+    public ResponseEntity<?> obterPorId(@PathVariable("codigo") int codigo){
+        Televisao televisao = televisaoService.obterPorId(codigo);
+        return televisao != null ? ResponseEntity.ok(televisao) : ResponseEntity.badRequest().body("Nao foi localizado");
     }
 
-    public void excluir(int codigo) {
-        televisaoService.excluir(codigo);
-    }
-
-    @GetMapping(value = "/televisao/lista")
-    public String telaLista(Model model) {
-
-        model.addAttribute("tvList", obterLista());
-
-        return "televisao/lista";
-    }
-    @GetMapping(value = "/televisao/cadastro")
-    public String telaCadastro() {
-
-        return "televisao/cadastro";
-    }
-    @GetMapping(value = "/televisao/{codigo}/excluir")
-    public String exclusao(@PathVariable int codigo) {
-
-        excluir(codigo);
-
-        return "redirect:/televisao/lista";
-    }
     
     
 }

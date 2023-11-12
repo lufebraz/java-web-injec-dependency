@@ -1,7 +1,6 @@
 package br.edu.infnet.application;
 
 import br.edu.infnet.application.model.domain.Requerente;
-import br.edu.infnet.application.model.domain.Usuario;
 import br.edu.infnet.application.model.service.RequerenteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;

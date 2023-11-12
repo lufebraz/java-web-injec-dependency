@@ -1,7 +1,5 @@
 package br.edu.infnet.application.model.domain.produtos;
 
-import br.edu.infnet.application.model.domain.Produto;
-
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -16,8 +14,8 @@ public class Televisao extends Produto {
     public Televisao() {
     }
 
-    public Televisao(String nome, float valor, int codigo, String polegadas, boolean smartTv, String marca) {
-        super(nome, valor, codigo);
+    public Televisao(String nome, float valor, String polegadas, boolean smartTv, String marca) {
+        super(nome, valor);
         this.polegadas = polegadas;
         this.smartTv = smartTv;
         this.marca = marca;

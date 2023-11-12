@@ -36,8 +36,7 @@ public class CelularLoader implements ApplicationRunner {
                     Float.parseFloat(campos[1]),
                     Integer.parseInt(campos[2]),
                     Integer.parseInt(campos[3]),
-                    Integer.parseInt(campos[4]),
-                    campos[5]
+                    campos[4]
             );
 
             celularController.incluir(celular);

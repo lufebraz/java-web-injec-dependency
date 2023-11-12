@@ -1,7 +1,5 @@
 package br.edu.infnet.application.model.domain.produtos;
 
-import br.edu.infnet.application.model.domain.Produto;
-
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -13,8 +11,8 @@ public class Notebook extends Produto {
     private String memoriaRam;
     private boolean placaDeVideo;
 
-    public Notebook(String nome, float valor, int codigo, String processador, String memoriaRam, boolean placaDeVideo) {
-        super(nome, valor, codigo);
+    public Notebook(String nome, float valor, String processador, String memoriaRam, boolean placaDeVideo) {
+        super(nome, valor);
         this.processador = processador;
         this.memoriaRam = memoriaRam;
         this.placaDeVideo = placaDeVideo;

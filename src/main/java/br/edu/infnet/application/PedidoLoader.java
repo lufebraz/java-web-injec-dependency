@@ -4,7 +4,11 @@ import br.edu.infnet.application.controller.PedidoController;
 import br.edu.infnet.application.model.domain.*;
 import br.edu.infnet.application.model.domain.produtos.Celular;
 import br.edu.infnet.application.model.domain.produtos.Notebook;
+import br.edu.infnet.application.model.domain.produtos.Produto;
 import br.edu.infnet.application.model.domain.produtos.Televisao;
+import br.edu.infnet.application.model.service.PedidoService;
+import br.edu.infnet.application.model.service.RequerenteService;
+import org.apache.logging.log4j.message.ReusableMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -23,7 +27,10 @@ import java.util.Map;
 public class PedidoLoader implements ApplicationRunner {
 	
 	@Autowired
-	private PedidoController pedidoController;
+	private PedidoService pedidoService;
+
+	@Autowired
+	private RequerenteService requerenteService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -46,12 +53,12 @@ public class PedidoLoader implements ApplicationRunner {
 			case "P":		
 								
 				pedido = new Pedido(
-						campos[1], 
-						new Requerente(campos[2], campos[3], campos[4]),
+						campos[1],
+						requerenteService.incluir(new Requerente(campos[2], campos[3], campos[4])),
 						new ArrayList<Produto>()
-					);				
+					);
 
-				pedidoController.incluir(pedido, new Usuario());
+				pedidoService.incluir(pedido);
 
 				break;
 
@@ -61,8 +68,7 @@ public class PedidoLoader implements ApplicationRunner {
 						Float.parseFloat(campos[2]),
 						Integer.parseInt(campos[3]),
 						Integer.parseInt(campos[4]),
-						Integer.parseInt(campos[5]),
-						campos[6]
+						campos[5]
 				);
 				
 				pedido.getProdutoList().add(celular);
@@ -74,10 +80,9 @@ public class PedidoLoader implements ApplicationRunner {
 				Notebook notebook = new Notebook(
 						campos[1],
 						Float.parseFloat(campos[2]),
-						Integer.parseInt(campos[3]),
+						campos[3],
 						campos[4],
-						campos[5],
-						Boolean.parseBoolean(campos[6])
+						Boolean.parseBoolean(campos[5])
 				);
 				
 				pedido.getProdutoList().add(notebook);
@@ -89,10 +94,9 @@ public class PedidoLoader implements ApplicationRunner {
 				Televisao televisao = new Televisao(
 						campos[1],
 						Float.parseFloat(campos[2]),
-						Integer.parseInt(campos[3]),
-						campos[4],
-						Boolean.parseBoolean(campos[5]),
-						campos[6]
+						campos[3],
+						Boolean.parseBoolean(campos[4]),
+						campos[5]
 				);
 				
 				pedido.getProdutoList().add(televisao);

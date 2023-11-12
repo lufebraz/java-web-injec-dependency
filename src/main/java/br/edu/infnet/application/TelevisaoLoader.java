@@ -33,10 +33,9 @@ public class TelevisaoLoader implements ApplicationRunner {
             Televisao televisao = new Televisao(
                     campos[0],
                     Float.parseFloat(campos[1]),
-                    Integer.parseInt(campos[2]),
-                    campos[3],
-                    Boolean.parseBoolean(campos[4]),
-                    campos[5]
+                    campos[2],
+                    Boolean.parseBoolean(campos[3]),
+                    campos[4]
             );
 
             televisaoService.incluir(televisao);

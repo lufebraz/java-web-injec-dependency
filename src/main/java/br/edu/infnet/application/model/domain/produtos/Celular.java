@@ -1,7 +1,5 @@
 package br.edu.infnet.application.model.domain.produtos;
 
-import br.edu.infnet.application.model.domain.Produto;
-
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -13,8 +11,8 @@ public class Celular extends Produto {
     private int quantidadeCameras;
     private String sistemaOperacional;
 
-    public Celular(String nome, float valor, int codigo, int armazenamento, int quantidadeCameras, String sistemaOperacional) {
-        super(nome, valor, codigo);
+    public Celular(String nome, float valor, int armazenamento, int quantidadeCameras, String sistemaOperacional) {
+        super(nome, valor);
         this.armazenamento = armazenamento;
         this.quantidadeCameras = quantidadeCameras;
         this.sistemaOperacional = sistemaOperacional;

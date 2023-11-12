@@ -10,6 +10,4 @@ import java.util.List;
 @Repository
 public interface NotebookRepository extends CrudRepository<Notebook, Integer> {
 
-	@Query("from Notebook c where c.usuario.id = :userid")
-	public List<Notebook> obterLista(Integer userid);
 }
